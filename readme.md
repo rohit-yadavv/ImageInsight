@@ -2,6 +2,14 @@
 
 ImageInsight is a web application that allows users to analyze images and extract insights using Optical Character Recognition (OCR) and basic image segmentation techniques.
 
+## Screenshots
+
+![Homepage](screenshots/homepage.png)
+_Homepage of the ImageInsight web application_
+
+![Output Page](screenshots/output_page.png)
+_Output page displaying analysis results_
+
 ## Features
 
 - Upload images for analysis
