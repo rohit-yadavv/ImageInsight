@@ -23,9 +23,6 @@ def upload_image():
         filename = file.filename
         file_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
         
-        # Debug: Print file path
-        print(f"Saving file to: {file_path}")
-        
         file.save(file_path)
 
         # Extract text and segment visual elements
@@ -36,9 +33,6 @@ def upload_image():
         segmented_image_filename = 'segmented_' + filename
         segmented_image_path = os.path.join(app.config['OUTPUT_FOLDER'], segmented_image_filename)
         cv2.imwrite(segmented_image_path, segmented_image)
-
-        # Debug: Print segmented image path
-        print(f"Segmented image saved to: {segmented_image_path}")
 
         return render_template('output.html', extracted_text=extracted_text, segmented_image_filename=segmented_image_filename)
 
