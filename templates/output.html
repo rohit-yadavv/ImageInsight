@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ImageInsight - Analysis Results</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <script>
+      function copyText() {
+        var textToCopy = document.getElementById("extractedText").innerText;
+        var tempInput = document.createElement("textarea");
+        tempInput.value = textToCopy;
+        document.body.appendChild(tempInput);
+        tempInput.select();
+        document.execCommand("copy");
+        document.body.removeChild(tempInput);
+        alert("Text copied to clipboard!");
+      }
+    </script>
+  </head>
+  <body class="bg-gray-100">
+    <div class="container mx-auto py-8">
+      <div class="bg-white shadow-md rounded-lg p-6 mb-8">
+        <h1 class="text-4xl font-bold text-center mb-2 text-blue-600">
+          ImageInsight
+        </h1>
+        <div class="bg-white shadow-md rounded-lg p-6">
+          <h2 class="text-2xl font-semibold mb-4">Extracted Text</h2>
+          <div class="relative">
+            <p id="extractedText" class="bg-gray-200 rounded p-4">
+              {{ extracted_text }}
+            </p>
+            <button
+              onclick="copyText()"
+              class="absolute top-2 right-2 bg-blue-500 hover:bg-blue-600 text-white font-bold py-1 px-2 rounded"
+            >
+              Copy Text
+            </button>
+          </div>
+        </div>
+
+        <div class="bg-white shadow-md rounded-lg p-6 mt-6">
+          <h2 class="text-2xl font-semibold mb-4">Segmented Visual Elements</h2>
+          <img
+            src="{{ url_for('output_file', filename=segmented_image_filename) }}"
+            alt="Segmented Visual Elements"
+            class="w-full rounded-lg border"
+          />
+        </div>
+      </div>
+
+      <div class="text-center mt-8">
+        <a
+          href="/"
+          class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded"
+          >Upload Another Image</a
+        >
+      </div>
+    </div>
+  </body>
+</html>
